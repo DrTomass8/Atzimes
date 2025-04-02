@@ -17,6 +17,18 @@ public class Kalkulators {
 			studSk = scan.nextInt();
 		}while(studSk<1);
 		String[] studenti = new String[studSk];
-
+		
+		do {
+			System.out.println("Kāds būs kritēriju skaits?");
+			while(!scan.hasNextInt()) {
+				System.out.println("Kāds būs kritēriju skaits?");
+				scan.next();
+			}
+			kritSk = scan.nextInt();
+		}while(kritSk<1);
+		String[] kriteriji = new String[kritSk];
+		int[] kriterijuSvars = new int[kritSk];
+		int[][] kritVertejums = new int[studSk][kritSk];
+		double[] semVertejums = new double[studSk];
 	}
 }
