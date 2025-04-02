@@ -101,7 +101,22 @@ public class Kalkulators {
         		}while(kritVertejums[i][j] <0 || kritVertejums[i][j] > 10);
         	}
         }
-
+        double rezult;
+        for(int i=0; i<studenti.length; i++) {
+        	rezult=0;
+        	for(int j=0; j<kriteriji.length; j++) {
+        		rezult += ((double)kriterijuSvars[j]/100) * kritVertejums[i][j];
+        	}
+        	semVertejums[i] = rezult;
+        }
+        for(int i=0; i<studenti.length; i++) {
+        	for(int j=0; j<kriteriji.length; j++) {
+        		System.out.println("Studenta "+studenti[i]+" vērtejums par kritēriju "+kriteriji[j]+" ir "+kritVertejums[i][j]+
+        				", kura svars ir "+kriterijuSvars[j]);
+        	}
+        	System.out.println("Semestra vērtējums ir "+df.format(semVertejums[i])+" balles\n");
+        }
+        scan.close();
         
     }
 }
