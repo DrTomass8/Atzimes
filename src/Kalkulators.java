@@ -40,6 +40,20 @@ public class Kalkulators {
 			}while(!studenti[i].matches("^[\\p{L} ]+$"));
 		}
 		
-		
+		for(int i=0; i<kriteriji.length; i++) {
+			do {
+				System.out.println("Ievadi "+(i+1)+". kritēriju");
+				kriteriji[i] = scan.nextLine().trim();
+			}while(!kriteriji[i].matches("^[\\p{L} ]+$"));
+			
+			System.out.println("Ievadi "+(i+1)+". kritērija svaru");
+			while(!scan.hasNextInt()){	
+				System.out.println("Ievadi "+(i+1)+". kritērija svaru");
+				scan.next();
+				}
+			kriterijuSvars[i] = scan.nextInt();
+			scan.nextLine();
+			}
+			
 	}
 }
