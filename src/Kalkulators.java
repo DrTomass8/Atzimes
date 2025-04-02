@@ -30,5 +30,16 @@ public class Kalkulators {
 		int[] kriterijuSvars = new int[kritSk];
 		int[][] kritVertejums = new int[studSk][kritSk];
 		double[] semVertejums = new double[studSk];
+		
+		scan.nextLine();
+		
+		for(int i=0; i<studenti.length; i++) {
+			do {
+				System.out.println("Ievadi "+(i+1)+". studenta vārdu");
+				studenti[i] = scan.nextLine().trim();
+			}while(!studenti[i].matches("^[\\p{L} ]+$"));
+		}
+		
+		
 	}
 }
