@@ -89,6 +89,18 @@ public class Kalkulators {
                 System.out.println("Kopējais svaru apjoms nav 100%. Lūdzu ievadi atkal.");
             }
         }
+        for(int i=0; i<kritVertejums.length; i++) {
+        	for(int j=0; j<kritVertejums[i].length; j++) {
+        		do {
+        			System.out.println("Ievadi "+studenti[i]+" vērtējumu par kritēriju "+kriteriji[j]);
+        			while(!scan.hasNextInt()) {
+        				System.out.println("Ievadi "+studenti[i]+" vērtējumu par kritēriju "+kriteriji[j]);
+        				scan.next();
+        			}
+        			kritVertejums[i][j] = scan.nextInt();
+        		}while(kritVertejums[i][j] <0 || kritVertejums[i][j] > 10);
+        	}
+        }
 
         
     }
