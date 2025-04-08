@@ -1,3 +1,8 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
@@ -114,6 +119,29 @@ public class Kalkulators {
      	System.out.println("Semestra vērtējums ir "+df.format(semVertejums[i])+" balles\n");
      }
  }
+static void saglabatFaila(String[] studenti, double[] semVertejums) {
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter("rezultati.txt"))) {
+        for (int i = 0; i < studenti.length; i++) {
+            writer.write(studenti[i] + " - " + semVertejums[i]);
+            writer.newLine();
+        }
+        System.out.println("Dati saglabāti failā rezultati.txt");
+    } catch (IOException e) {
+        System.out.println("Notika kļūda, saglabājot failu.");
+    }
+}
+
+
+static void nolasitFailu() {
+    try (BufferedReader reader = new BufferedReader(new FileReader("rezultati.txt"))) {
+        String line;
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
+        }
+    } catch (IOException e) {
+        System.out.println("Notika kļūda, nolasot failu.");
+    }
+}
     public static void main(String[] args) {
         int izvele;
         Scanner scan = new Scanner(System.in);
@@ -136,9 +164,13 @@ public class Kalkulators {
         case 6:
         	System.out.println("Programma apturēta");
         	break;
+
         }
         }while(izvele != 6);
         scan.close();
         
+        
+        
     }
+    
 }
