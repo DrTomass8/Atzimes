@@ -2,6 +2,55 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Kalkulators {
+	
+	
+	static String[] Kartosana(double[] semVertejums, String[] studenti, int karto, int[][] kritVertejums) {
+	    if(karto == 0) {//0 augošā
+	        for(int i = 0; i < studenti.length - 1; i++) {
+	            for(int j = 0; j < studenti.length - i - 1; j++) {
+	                if(semVertejums[j] > semVertejums[j + 1]) {
+	 
+	                    double tempVert = semVertejums[j];
+	                    semVertejums[j] = semVertejums[j + 1];
+	                    semVertejums[j + 1] = tempVert;
+	                    
+	            
+	                    String tempStud = studenti[j];
+	                    studenti[j] = studenti[j + 1];
+	                    studenti[j + 1] = tempStud;
+	                    
+	        
+	                    int[] tempKritVertejums = kritVertejums[j];
+	                    kritVertejums[j] = kritVertejums[j + 1];
+	                    kritVertejums[j + 1] = tempKritVertejums;
+	                }
+	            }
+	        }
+	    } else {//1 dilstošā 
+	        for(int i = 0; i < studenti.length - 1; i++) {
+	            for(int j = 0; j < studenti.length - i - 1; j++) {
+	                if(semVertejums[j] < semVertejums[j + 1]) {
+	       
+	                    double tempVert = semVertejums[j];
+	                    semVertejums[j] = semVertejums[j + 1];
+	                    semVertejums[j + 1] = tempVert;
+	                    
+	      
+	                    String tempStud = studenti[j];
+	                    studenti[j] = studenti[j + 1];
+	                    studenti[j + 1] = tempStud;
+	                    
+	            
+	                    int[] tempKritVertejums = kritVertejums[j];
+	                    kritVertejums[j] = kritVertejums[j + 1];
+	                    kritVertejums[j + 1] = tempKritVertejums;
+	                }
+	            }
+	        }
+	    }
+	    
+	    return studenti;
+	}
 
     public static void main(String[] args) {
         int studSk, kritSk;
@@ -117,6 +166,8 @@ public class Kalkulators {
         	System.out.println("Semestra vērtējums ir "+df.format(semVertejums[i])+" balles\n");
         }
         scan.close();
+        
+        
         
     }
 }
