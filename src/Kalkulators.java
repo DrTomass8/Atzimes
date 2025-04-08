@@ -1,13 +1,45 @@
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Kalkulators {
+	static void saglabatFaila(String[] studenti, double[] semVertejums) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("rezultati.txt"))) {
+            for (int i = 0; i < studenti.length; i++) {
+                writer.write(studenti[i] + " - " + semVertejums[i]);
+                writer.newLine();
+            }
+            System.out.println("Dati saglabāti failā rezultati.txt");
+        } catch (IOException e) {
+            System.out.println("Notika kļūda, saglabājot failu.");
+        }
+    }
+
+  
+    static void nolasitFailu() {
+        try (BufferedReader reader = new BufferedReader(new FileReader("rezultati.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("Notika kļūda, nolasot failu.");
+        }
+    }
 
     public static void main(String[] args) {
         int studSk, kritSk;
         Scanner scan = new Scanner(System.in);
         DecimalFormat df = new DecimalFormat(" 0.#");
-
+       
+        
+       
+        	
+        
         
         do {
             System.out.println("Cik studentiem aprēķināt gala vērtējumu?");
@@ -18,7 +50,7 @@ public class Kalkulators {
             studSk = scan.nextInt();
         } while (studSk < 1);
         
-        String[] studenti = new String[studSk];
+    String[] studenti = new String[studSk];
 
        
         do {
@@ -118,5 +150,8 @@ public class Kalkulators {
         }
         scan.close();
         
+        
+        
     }
+    
 }
